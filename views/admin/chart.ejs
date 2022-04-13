@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head.ejs'); -%>
+    <title>Drawing Together Admin</title>
+</head>
+<body>
+	<div class="container-scroller">
+    <%- include('partials/sidebar.ejs'); -%>
+      <div class="container-fluid page-body-wrapper">
+        <%- include('partials/navbar.ejs'); -%>
+          <div class="main-panel">
+						<div class="content-wrapper">
+              <div class="row">
+                <div class="col-lg-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title">Line chart</h4>
+                      <canvas id="lineChart" style="height: 230px; display: block; width: 461px;" width="461" height="230" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title">Bar chart</h4>
+                      <canvas id="barChart" style="height: 230px; display: block; width: 461px;" width="461" height="230" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title">Area chart</h4>
+                      <canvas id="areaChart" style="height: 230px; display: block; width: 461px;" width="461" height="230" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title">Doughnut chart</h4>
+                      <canvas id="doughnutChart" style="height: 230px; display: block; width: 461px;" width="461" height="230" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title">Pie chart</h4>
+                      <canvas id="pieChart" style="height: 230px; display: block; width: 461px;" width="461" height="230" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <h4 class="card-title">Scatter chart</h4>
+                      <canvas id="scatterChart" style="height: 230px; display: block; width: 461px;" width="461" height="230" class="chartjs-render-monitor"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <%- include('partials/footer.ejs'); -%>
+        </div>
+      </div>
+    </div>
+    
+    <%- include('partials/script.ejs'); -%>
+    <script src="../assets/js/chart.js"></script>
+</body>
+</html>

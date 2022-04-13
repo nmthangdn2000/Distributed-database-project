@@ -1,10 +1,9 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node --experimental-modules --es-module-specifier-resolution=node  app.js",
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node  app.js",
     "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node  app.js"
   },
   "type": "module",
@@ -12,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10",
@@ -19,5 +19,14 @@
     "msnodesqlv8": "^2.4.7",
     "mssql": "^8.1.0",
     "multer": "^1.4.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmthangdn2000/Distributed-database-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nmthangdn2000/Distributed-database-project/issues"
+  },
+  "homepage": "https://github.com/nmthangdn2000/Distributed-database-project#readme",
+  "description": ""
 }
