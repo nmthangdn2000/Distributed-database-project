@@ -8,7 +8,7 @@ const configSql = {
   server: SERVERNAME.MAIN,
   user: 'sa',
   password: '123456',
-  database: 'SHOP_DT',
+  database: 'SHOP_DT2',
   options: {
     trustServerCertificate: true,
   },

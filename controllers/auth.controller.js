@@ -7,8 +7,7 @@ import * as database from '../start/database';
 const login = async (req, res) => {
   try {
     console.log(req.body);
-    const { username, password, serverDatabase } = req.body;
-    const data = await authService.login(username, password, serverDatabase);
+    const data = await authService.login(req.body);
     // database.connect(req.body.serverDatabase);
     responseSuccessWithData(res, data);
   } catch (error) {
@@ -18,7 +17,14 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-  res.send('register');
+  try {
+    const data = await authService.register(req.body);
+    // database.connect(req.body.serverDatabase);
+    responseSuccessWithData(res, RESPONSE.REGISTER_SUCCESS);
+  } catch (error) {
+    console.log(error.message);
+    responseError(res, error.message);
+  }
 };
 
 export { login, register };

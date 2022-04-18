@@ -21133,3 +21133,16 @@ div.tagsinput {
   flex-grow: 1; }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+/*  */
+#myTable_length label{
+  color: white;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#myTable_info{
+  color: white;
+}
+/*  */
