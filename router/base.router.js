@@ -2,7 +2,7 @@ import { HttpMethod } from '../common/constants';
 import { verifyUser } from '../middlewares/authentic.middleware';
 import express from 'express';
 
-const router = express.Router();
+let router = express.Router();
 let routes = [];
 
 const route = ({ method, url = '', action, middelware = [verifyUser] }) => {
@@ -16,10 +16,12 @@ const getRouter = () => {
   routes.forEach((route) => {
     addRoute(route);
   });
+  routes = [];
   return router;
 };
 
 const addRoot = (initRoute) => {
+  router = express.Router();
   initRoute();
   return getRouter();
 };

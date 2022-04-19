@@ -1,4 +1,5 @@
 import { getAll } from '../models/employees.models';
+import authService from '../services/auth.service';
 
 const index = (req, res, next) => {
   res.render('admin/index');
@@ -13,21 +14,38 @@ const table = (req, res, next) => {
   res.render('admin/tables');
 };
 const login = (req, res, next) => {
-  res.render('admin/signup-signin/login')
-}
+  res.render('admin/signup-signin/login');
+};
+const postLogin = async (req, res) => {
+  try {
+    const data = await authService.login(req.body);
+    res.cookie('token', data.token, { signed: true });
+    res.redirect('/admin');
+  } catch (error) {
+    console.log(error.message);
+    res.render('admin/signup-signin/login', { error: 'Tài khoản hoặc mật khẩu không đúng' });
+  }
+};
 const register = (req, res, next) => {
-  res.render('admin/signup-signin/register')
-}
+  res.render('admin/signup-signin/register');
+};
+
+const logout = (req, res, next) => {
+  console.log('logout');
+  res.clearCookie('token');
+  res.redirect('/admin/login');
+};
+
 const test = async (req, res, next) => {
   const data = await getAll();
   console.log(data);
   const abc = {
     draw: 1,
-    recordsTotal: data.recordset.length,
-    recordsFiltered: data.recordset.length,
-    data: data.recordset,
+    recordsTotal: data.length,
+    recordsFiltered: data.length,
+    data: data,
   };
   res.json(abc);
 };
 
-export { index, profile, chart, table, test, login, register };
+export { index, profile, chart, table, test, login, register, postLogin, logout };

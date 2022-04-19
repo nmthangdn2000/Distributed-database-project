@@ -5,14 +5,16 @@ import * as adminController from '../controllers/admin.controller';
 const initRoute = () => {
   route({ method: HttpMethod.GET, url: '/test', action: adminController.test });
 
-  route({ method: HttpMethod.GET, url: '/', action: adminController.index, middelware: [] });
-  route({ method: HttpMethod.GET, url: '/dashboard', action: adminController.index, middelware: [] });
-  route({ method: HttpMethod.GET, url: '/profile', action: adminController.profile, middelware: [] });
-  route({ method: HttpMethod.GET, url: '/chart', action: adminController.chart, middelware: [] });
-  route({ method: HttpMethod.GET, url: '/tables', action: adminController.table, middelware: [] });
+  route({ method: HttpMethod.GET, url: '/', action: adminController.index });
+  route({ method: HttpMethod.GET, url: '/dashboard', action: adminController.index });
+  route({ method: HttpMethod.GET, url: '/profile', action: adminController.profile });
+  route({ method: HttpMethod.GET, url: '/chart', action: adminController.chart });
+  route({ method: HttpMethod.GET, url: '/tables', action: adminController.table });
   route({ method: HttpMethod.GET, url: '/login', action: adminController.login, middelware: [] });
   route({ method: HttpMethod.GET, url: '/register', action: adminController.register, middelware: [] });
+  route({ method: HttpMethod.GET, url: '/logout', action: adminController.logout, middelware: [] });
   // route({ method: HttpMethod.POST, url: '/refresh-token', action: authController.register, middelware: [] });
+  route({ method: HttpMethod.POST, url: '/login', action: adminController.postLogin, middelware: [] });
 };
 
-export default addRoot(initRoute);
+export default () => addRoot(initRoute);

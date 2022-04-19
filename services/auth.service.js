@@ -14,8 +14,9 @@ class AuthService {
     // };
     await database.connect(serverDatabase);
     const employee = await EmployeeModel.getOne(`USERNAME = '${username}' AND PASSWORD = '${password}'`);
-    if (!employee) throw Error(ERROR.AccountDoesNotExist);
-    const { EMPLOYEE_ID, NAME, USERNAME, ...data } = employee;
+
+    if (!employee || employee.length == 0) throw Error(ERROR.AccountDoesNotExist);
+    const { EMPLOYEE_ID, NAME, USERNAME, ...data } = employee[0];
     const token = endCodeToken({ EMPLOYEE_ID, NAME, USERNAME, serverDatabase });
     return { employee, token };
   }

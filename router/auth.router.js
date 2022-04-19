@@ -8,4 +8,4 @@ const initRoute = () => {
   // route({ method: HttpMethod.POST, url: '/refresh-token', action: authController.register, middelware: [] });
 };
 
-export default addRoot(initRoute);
+export default () => addRoot(initRoute);

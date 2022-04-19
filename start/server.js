@@ -3,6 +3,7 @@ import logger from 'morgan';
 import appConfig from '../configs/appConfig';
 import routerConfig from '../configs/routerConfig';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const __dirname = path.resolve();
@@ -14,13 +15,14 @@ const middleware = [
   express.urlencoded({ extended: true }),
   express.json(),
   express.static(path.join(__dirname, 'public')),
+  cookieParser('hello'),
 ];
 
 const initStatic = () => {
   Array.from(middleware).forEach((m) => {
     app.use(m);
   });
-  app.get('/check-server', (req, res) => res.json({ success: true }));
+  app.get('/check-server', (req, res) => res.json(app._router.stack));
 };
 
 const initApiRouters = () => {

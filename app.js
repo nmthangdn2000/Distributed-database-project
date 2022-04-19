@@ -6,6 +6,6 @@ import * as server from './start/server';
   try {
     server.start();
   } catch (error) {
-    console.log(`Cannot start server. Error: ${e}`);
+    console.log(`Cannot start server. Error: ${error}`);
   }
 })();
