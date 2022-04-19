@@ -15,6 +15,13 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
+                  <!-- <div style="width: 200px; margin-bottom: 20px">
+                    <select class="form-control" name="serverDatabase" id="server">
+                      <option value="DESKTOP-LIKSEB9">Server 1</option>
+                      <option value="DESKTOP-LIKSEB9\MSSQLSERVER01">Server 2</option>
+                      <option value="DESKTOP-LIKSEB9\MSSQLSERVER02">Server 3</option>
+                    </select>
+                  </div> -->
                   <div class="row" style="justify-content: space-between; align-items: center">
                     <h4 class="card-title">Striped Table</h4>
                     <button
@@ -354,28 +361,42 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Default form</h4>
-                <p class="card-description">Basic form layout</p>
-                <form class="forms-sample">
+        <form method="post" action="/admin/table/employee/add" class="forms-sample">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add new Employee</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputUsername1">Username</label>
-                    <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username" />
+                    <label for="exampleInputUsername1">Name</label>
+                    <input type="text" class="form-control" name="name" id="exampleInputUsername1" placeholder="Name" />
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" />
+                    <label for="exampleInputEmail1">UserName</label>
+                    <input type="text" class="form-control" name="username" placeholder="UserName" />
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                    <input
+                      type="password"
+                      class="form-control"
+                      name="password"
+                      id="exampleInputPassword1"
+                      placeholder="Password"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputUsername1">Branch id</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branch_id"
+                      id="exampleInputUsername1"
+                      placeholder="Branch id"
+                    />
                   </div>
                   <div class="form-group">
                     <label for="exampleInputConfirmPassword1">Confirm Password</label>
@@ -383,25 +404,18 @@
                       type="password"
                       class="form-control"
                       id="exampleInputConfirmPassword1"
-                      placeholder="Password"
+                      placeholder="Confirm Password"
                     />
                   </div>
-                  <div class="form-check form-check-flat form-check-primary">
-                    <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" /> Remember me <i class="input-helper"></i
-                    ></label>
-                  </div>
-                  <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                  <button class="btn btn-dark">Cancel</button>
-                </form>
+                </div>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -411,7 +425,7 @@
       $(document).ready(function () {
         $('#myTable').DataTable({
           ajax: {
-            url: '/admin/test',
+            url: '/admin/table/employee',
             type: 'GET',
             beforeSend: function (request) {
               request.setRequestHeader(
@@ -424,25 +438,30 @@
             {
               title: 'Employee_Id',
               render: function (datum, type, row) {
-                return `aaa ${row.EMPLOYEE_ID}`;
+                return `${row.EMPLOYEE_ID}`;
               },
             },
             {
               title: 'Branch_Id',
               render: function (datum, type, row) {
-                return `aaa ${row.BRANCH_ID}`;
+                return `${row.BRANCH_ID}`;
               },
             },
             {
               title: 'Name',
               render: function (datum, type, row) {
-                return `aaa ${row.NAME}`;
+                return `${row.NAME}`;
               },
             },
             {
               title: 'Acction',
               render: function (datum, type, row) {
-                return `<button class="btn btn-success">Click!</button>`;
+                return `<button class="btn btn-success" data-bs-toggle="modal"
+                      data-bs-target="#exampleModal">Edit</button>
+                      <a href="/admin/table/employee/delete/${row.EMPLOYEE_ID}">
+                        <button class="btn btn-danger">Delete</button>
+                      </a>
+                      `;
               },
             },
           ],
