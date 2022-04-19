@@ -1,55 +1,55 @@
 /* Tables */
 
 .table {
-  margin-bottom: 0;
-  color: $text-muted;
+  margin-bottom: 0 !important;
+  color: $text-muted !important;
   
 
   thead {
     th {
-      border-top: 0;
-      border-bottom-width: 1px;
-      font-weight: $font-weight-medium;
-      color: $text-muted; 
+      border-top: 0 !important;
+      border-bottom-width: 1px !important;
+      font-weight: $font-weight-medium !important;
+      color: $text-muted !important; 
       
 
       i {
-        margin-left: 0.325rem;
+        margin-left: 0.325rem !important;
       }
     }
   }
 
   th,
   td {
-    vertical-align: middle;
-    font-size: $default-font-size;
-    line-height: 1;
-    white-space: nowrap;
+    vertical-align: middle !important;
+    font-size: $default-font-size !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
 
     img {
-      width: 30px;
-      height: 30px;
-      border-radius: 100%;
+      width: 30px !important;
+      height: 30px !important;
+      border-radius: 100% !important;
     }
 
     .badge {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
     }
   }
 
   &.table-borderless {
-    border: none;
+    border: none !important;
 
     tr,
     td,
     th {
-      border: none;
+      border: none !important;
     }
   }
   .table-dark {
-    background: $table-dark-bg;
+    background: $table-dark-bg !important;
   }
   &.table-contextual {
-    color: #ffffff;
+    color: #ffffff !important;
   }
 }

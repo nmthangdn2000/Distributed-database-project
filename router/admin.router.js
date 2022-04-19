@@ -3,6 +3,8 @@ import { HttpMethod } from '../common/constants';
 import * as adminController from '../controllers/admin.controller';
 
 const initRoute = () => {
+  route({ method: HttpMethod.GET, url: '/test', action: adminController.test });
+
   route({ method: HttpMethod.GET, url: '/', action: adminController.index, middelware: [] });
   route({ method: HttpMethod.GET, url: '/dashboard', action: adminController.index, middelware: [] });
   route({ method: HttpMethod.GET, url: '/profile', action: adminController.profile, middelware: [] });

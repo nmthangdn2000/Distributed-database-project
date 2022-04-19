@@ -8572,9 +8572,9 @@ pre {
   .table th, .jsgrid .jsgrid-table th,
   .table td,
   .jsgrid .jsgrid-table td {
-    padding: 0.9375rem;
-    vertical-align: top;
-    border-top: 1px solid #2c2e33; }
+    padding: 0.9375rem !important;
+    vertical-align: top !important;
+    border-top: 1px solid #2c2e33 !important; }
   .table thead th, .jsgrid .jsgrid-table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #2c2e33; }
@@ -8601,7 +8601,7 @@ pre {
   border: 0; }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #000000; }
+  background-color: #000000 !important; }
 
 .table-hover tbody tr:hover {
   color: #212529;
@@ -21133,3 +21133,16 @@ div.tagsinput {
   flex-grow: 1; }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+/*  */
+#myTable_length label{
+  color: white;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#myTable_info{
+  color: white;
+}
+/*  */

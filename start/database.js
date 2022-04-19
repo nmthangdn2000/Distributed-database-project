@@ -8,18 +8,23 @@ const configSql = {
   server: SERVERNAME.MAIN,
   user: 'sa',
   password: '123456',
-  database: 'SHOP_DT',
+  database: 'SHOP_DT2',
   options: {
     trustServerCertificate: true,
   },
 };
 
-const connect = async () => {
+const connect = async (server) => {
+  console.log('server ', server);
+  configSql.server = server;
   pool = new sql.ConnectionPool(configSql);
-  await pool.connect(async (err) => {
-    if (err) console.log(`Can not connect databse: ${err}`);
-    else console.log(`Connect databse success`);
-  });
+  try {
+    await pool.connect();
+    return pool;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };
 
-export { configSql, connect, pool };
+export { connect, pool };
