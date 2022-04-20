@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="../assets/css/dataTable.css" />
     <title>Drawing Together Admin</title>
   </head>
+  <script>
+    console.log('<%= user.NAME %>');
+    console.log('<%= serverDatabaseAdmin %>');
+  </script>
+
   <body>
     <div class="container-scroller">
       <%- include('partials/sidebar.ejs'); -%>
@@ -15,15 +20,19 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <!-- <div style="width: 200px; margin-bottom: 20px">
-                    <select class="form-control" name="serverDatabase" id="server">
-                      <option value="DESKTOP-LIKSEB9">Server 1</option>
-                      <option value="DESKTOP-LIKSEB9\MSSQLSERVER01">Server 2</option>
-                      <option value="DESKTOP-LIKSEB9\MSSQLSERVER02">Server 3</option>
+                  <% if(user.NAME=='Admin' ){ var options=["DESKTOP-LIKSEB9", "DESKTOP-LIKSEB9\\MSSQLSERVER01" ,
+                  "DESKTOP-LIKSEB9\\MSSQLSERVER02" ]; var servers=["Server 1", "Server 2" , "Server 3" ]; %>
+                  <div style="width: 200px; margin-bottom: 20px">
+                    <select class="form-control" name="serverDatabase" id="server" onchange="handleSelect(this)">
+                      <% for ( let i=0; i < options.length; i++ ) { var selected=serverDatabaseAdmin==options[i] ?
+                      "selected" : "" ; %>
+                      <option value="<%= options[i] %>" <%=selected%>> <%= servers[i] %></option>
+                      <%}%>
                     </select>
-                  </div> -->
+                  </div>
+                  <%}%>
                   <div class="row" style="justify-content: space-between; align-items: center">
-                    <h4 class="card-title">Striped Table</h4>
+                    <h4 class="card-title">Employee Table</h4>
                     <button
                       class="btn btn-success create-new-button"
                       data-bs-toggle="modal"
@@ -467,6 +476,13 @@
           ],
         });
       });
+      function handleSelect(elm) {
+        let serverName = '';
+        if (elm.value == 'DESKTOP-LIKSEB9') serverName = 'MAIN';
+        else if (elm.value == 'DESKTOP-LIKSEB9\\MSSQLSERVER01') serverName = 'SV1';
+        else serverName = 'SV2';
+        window.location = '/admin/change-server/' + serverName;
+      }
     </script>
   </body>
 </html>

@@ -13,8 +13,14 @@ const initRoute = () => {
   route({ method: HttpMethod.GET, url: '/login', action: adminController.login, middelware: [] });
   route({ method: HttpMethod.GET, url: '/register', action: adminController.register, middelware: [] });
   route({ method: HttpMethod.GET, url: '/logout', action: adminController.logout, middelware: [] });
-  // route({ method: HttpMethod.POST, url: '/refresh-token', action: authController.register, middelware: [] });
+  // route({ method: HttpMethod.POST, url: '/refresh-token', action: authController.register, middelware: [] });changeServerDatabase
   route({ method: HttpMethod.POST, url: '/login', action: adminController.postLogin, middelware: [] });
+  route({
+    method: HttpMethod.GET,
+    url: '/change-server/:serverDatatbase',
+    action: adminController.changeServerDatabase,
+    middelware: [],
+  });
 };
 
 export default () => addRoot(initRoute);

@@ -6,7 +6,6 @@ import { getAll } from '../models/employees.models';
 const getEmployee = async (req, res) => {
   try {
     const data = await getAll();
-    console.log(data);
     const abc = {
       draw: 1,
       recordsTotal: data.length,

@@ -1,3 +1,4 @@
+import { SERVERNAME } from '../common/constants';
 import { getAll } from '../models/employees.models';
 import authService from '../services/auth.service';
 
@@ -19,6 +20,8 @@ const login = (req, res, next) => {
 const postLogin = async (req, res) => {
   try {
     const data = await authService.login(req.body);
+    res.app.locals.serverDatabaseAdmin = req.body.serverDatabase;
+
     res.cookie('token', data.token, { signed: true });
     res.redirect('/admin');
   } catch (error) {
@@ -48,4 +51,9 @@ const test = async (req, res, next) => {
   res.json(abc);
 };
 
-export { index, profile, chart, table, test, login, register, postLogin, logout };
+const changeServerDatabase = (req, res) => {
+  res.app.locals.serverDatabaseAdmin = SERVERNAME[req.params.serverDatatbase];
+  res.redirect('/admin/tables');
+};
+
+export { index, profile, chart, table, test, login, register, postLogin, logout, changeServerDatabase };

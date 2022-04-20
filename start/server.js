@@ -4,6 +4,7 @@ import appConfig from '../configs/appConfig';
 import routerConfig from '../configs/routerConfig';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import { SERVERNAME } from '../common/constants';
 
 const app = express();
 const __dirname = path.resolve();
@@ -22,7 +23,7 @@ const initStatic = () => {
   Array.from(middleware).forEach((m) => {
     app.use(m);
   });
-  app.get('/check-server', (req, res) => res.json(app._router.stack));
+  app.get('/check-server', (req, res) => res.json(res.app.locals.serverDatabaseAdmin));
 };
 
 const initApiRouters = () => {
@@ -32,6 +33,7 @@ const initApiRouters = () => {
 const start = () => {
   initStatic();
   initApiRouters();
+  app.locals.serverDatabaseAdmin = SERVERNAME.MAIN;
   app.listen(appConfig.env.port, () => console.log(`Server started on port: ${appConfig.env.port}`));
 };
 

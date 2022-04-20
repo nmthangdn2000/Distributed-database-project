@@ -11,12 +11,16 @@ const verifyUser = async (req, res, next) => {
     const token = req.signedCookies.token;
     const decoded = jwt.verify(token, appConfig.KEY_SECRET_JWT);
     res.app.locals.user = decoded;
+    if (res.app.locals.user.NAME == 'Admin') {
+      decoded.serverDatabase = res.app.locals.serverDatabaseAdmin;
+      req.serverDatabase = decoded.serverDatabase;
+    }
     if (SERVERNAME.MAIN == decoded.serverDatabase) res.app.locals.serverName = 'Server 1';
     else if (SERVERNAME.SV1 == decoded.serverDatabase) res.app.locals.serverName = 'Server 2';
     else res.app.locals.serverName = 'Server 3';
 
     req.username = decoded.username;
-    req.serverDatabase = decoded.serverDatabase;
+
     await database.connect(decoded.serverDatabase);
     next();
     // res.send('ok');

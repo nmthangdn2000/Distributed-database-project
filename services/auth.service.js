@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import appConfig from '../configs/appConfig';
 import * as EmployeeModel from '../models/employees.models';
 import * as database from '../start/database';
+import res from 'express/lib/response';
 class AuthService {
   async login({ username, password, serverDatabase }) {
     // const query = {
