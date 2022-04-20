@@ -41,4 +41,16 @@ const deleteById = async (req, res) => {
   }
 };
 
-export { getEmployee, create, deleteById };
+const updateById = async (req, res) => {
+  try {
+    console.log('ákljdlaskjdklajslkdjkl ', req.serverDatabase);
+    await employeeService.updateById(req.body, req.serverDatabase);
+    // database.connect(req.body.serverDatabase);
+    res.redirect('/admin/tables');
+  } catch (error) {
+    console.log(error.message);
+    res.redirect('/admin/tables', { error: 'không thể thêm mới nhân viên' });
+  }
+};
+
+export { getEmployee, create, deleteById, updateById };

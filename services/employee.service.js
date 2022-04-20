@@ -16,4 +16,9 @@ const deleteById = async (id, serverDatabase) => {
   await EmployeeModel.deleteById(id);
 };
 
-export { create, deleteById };
+const updateById = async (data, serverDatabase) => {
+  await database.connect(serverDatabase);
+  await EmployeeModel.updatebyId(data);
+};
+
+export { create, deleteById, updateById };

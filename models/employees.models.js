@@ -57,7 +57,7 @@ const deleteById = async (id) => {
 };
 
 const updatebyId = async ({ id, name, branch_id, username }) => {
-  const queryString = `UPDATE EMPLOYEE SET NAME = '${name}', BRANCH_ID = '${branch_id}', USERNAME = '${username}' WHERE EMPLOYEE_ID = '${id}'`;
+  const queryString = `UPDATE EMPLOYEE SET NAME = N'${name}', BRANCH_ID = '${branch_id}', USERNAME = '${username}' WHERE EMPLOYEE_ID = '${id}'`;
   try {
     const data = await pool.request().query(queryString);
     return data;

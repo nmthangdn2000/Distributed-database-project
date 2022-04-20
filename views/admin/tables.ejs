@@ -26,7 +26,8 @@
                     <select class="form-control" name="serverDatabase" id="server" onchange="handleSelect(this)">
                       <% for ( let i=0; i < options.length; i++ ) { var selected=serverDatabaseAdmin==options[i] ?
                       "selected" : "" ; %>
-                      <option value="<%= options[i] %>" <%=selected%>> <%= servers[i] %></option>
+                      <option value="<%= options[i] %>" <%=selected%>><%= servers[i] %></option>
+                      <!-- <%=selected%> -->
                       <%}%>
                     </select>
                   </div>
@@ -51,311 +52,7 @@
                           <th>Acction</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <!-- <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>Herman Beck</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-success"
-                                role="progressbar"
-                                style="width: 25%"
-                                aria-valuenow="25"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                              Click!
-                            </button>
-                          </td>
-                        </tr> -->
-                        <!-- <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>Herman Beck</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-success"
-                                role="progressbar"
-                                style="width: 25%"
-                                aria-valuenow="25"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 77.99</td>
-                          <td>May 15, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
-                          </td>
-                          <td>Messsy Adam</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-danger"
-                                role="progressbar"
-                                style="width: 75%"
-                                aria-valuenow="75"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$245.30</td>
-                          <td>July 1, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
-                          </td>
-                          <td>John Richards</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-warning"
-                                role="progressbar"
-                                style="width: 90%"
-                                aria-valuenow="90"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$138.00</td>
-                          <td>Apr 12, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-4.png" alt="image" />
-                          </td>
-                          <td>Peter Meggik</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-primary"
-                                role="progressbar"
-                                style="width: 50%"
-                                aria-valuenow="50"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 77.99</td>
-                          <td>May 15, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>Edward</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-danger"
-                                role="progressbar"
-                                style="width: 35%"
-                                aria-valuenow="35"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 160.25</td>
-                          <td>May 03, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
-                          </td>
-                          <td>John Doe</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-info"
-                                role="progressbar"
-                                style="width: 65%"
-                                aria-valuenow="65"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 123.21</td>
-                          <td>April 05, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
-                          </td>
-                          <td>Henry Tom</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-warning"
-                                role="progressbar"
-                                style="width: 20%"
-                                aria-valuenow="20"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 150.00</td>
-                          <td>June 16, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>Herman Beck</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-success"
-                                role="progressbar"
-                                style="width: 25%"
-                                aria-valuenow="25"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 77.99</td>
-                          <td>May 15, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
-                          </td>
-                          <td>Messsy Adam</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-danger"
-                                role="progressbar"
-                                style="width: 75%"
-                                aria-valuenow="75"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$245.30</td>
-                          <td>July 1, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
-                          </td>
-                          <td>John Richards</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-warning"
-                                role="progressbar"
-                                style="width: 90%"
-                                aria-valuenow="90"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$138.00</td>
-                          <td>Apr 12, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-4.png" alt="image" />
-                          </td>
-                          <td>Peter Meggik</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-primary"
-                                role="progressbar"
-                                style="width: 50%"
-                                aria-valuenow="50"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 77.99</td>
-                          <td>May 15, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                          </td>
-                          <td>Edward</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-danger"
-                                role="progressbar"
-                                style="width: 35%"
-                                aria-valuenow="35"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 160.25</td>
-                          <td>May 03, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-2.png" alt="image" />
-                          </td>
-                          <td>John Doe</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-info"
-                                role="progressbar"
-                                style="width: 65%"
-                                aria-valuenow="65"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 123.21</td>
-                          <td>April 05, 2015</td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-3.png" alt="image" />
-                          </td>
-                          <td>Henry Tom</td>
-                          <td>
-                            <div class="progress">
-                              <div
-                                class="progress-bar bg-warning"
-                                role="progressbar"
-                                style="width: 20%"
-                                aria-valuenow="20"
-                                aria-valuemin="0"
-                                aria-valuemax="100"
-                              ></div>
-                            </div>
-                          </td>
-                          <td>$ 150.00</td>
-                          <td>June 16, 2015</td>
-                        </tr> -->
-                      </tbody>
+                      <tbody></tbody>
                     </table>
                   </div>
                 </div>
@@ -380,40 +77,101 @@
               <div class="card">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputUsername1">Name</label>
-                    <input type="text" class="form-control" name="name" id="exampleInputUsername1" placeholder="Name" />
+                    <label for="input-add-name">Name</label>
+                    <input type="text" class="form-control" name="name" id="input-add-name" placeholder="Name" />
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">UserName</label>
-                    <input type="text" class="form-control" name="username" placeholder="UserName" />
+                    <label for="input-add-username">UserName</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="username"
+                      id="input-add-username"
+                      placeholder="UserName"
+                    />
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label for="input-add-password">Password</label>
                     <input
                       type="password"
                       class="form-control"
                       name="password"
-                      id="exampleInputPassword1"
+                      id="input-add-password"
                       placeholder="Password"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputUsername1">Branch id</label>
+                    <label for="input-add-branch-id">Branch id</label>
                     <input
                       type="text"
                       class="form-control"
                       name="branch_id"
-                      id="exampleInputUsername1"
+                      id="input-add-branch-id"
                       placeholder="Branch id"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputConfirmPassword1">Confirm Password</label>
+                    <label for="input-add-confirm-password">Confirm Password</label>
                     <input
                       type="password"
                       class="form-control"
-                      id="exampleInputConfirmPassword1"
+                      id="input-add-confirm-password"
                       placeholder="Confirm Password"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal Edit -->
+    <div
+      class="modal fade"
+      id="exampleModalEdit"
+      tabindex="-1"
+      aria-labelledby="exampleModalEditLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <form method="post" action="/admin/table/employee/update" class="forms-sample">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalEditLabel">Add aaaaaaaaaaaaaaaa new Employee</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <input type="hidden" class="form-control" name="id" id="input-id" />
+                  <div class="form-group">
+                    <label for="input-name">Name</label>
+                    <input type="text" class="form-control" name="name" id="input-name" placeholder="Name" />
+                  </div>
+                  <div class="form-group">
+                    <label for="input-username">UserName</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="username"
+                      id="input-username"
+                      placeholder="UserName"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="input-branch-id">Branch id</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="branch_id"
+                      id="input-branch-id"
+                      placeholder="Branch id"
                     />
                   </div>
                 </div>
@@ -432,7 +190,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
       $(document).ready(function () {
-        $('#myTable').DataTable({
+        const table = $('#myTable').DataTable({
           ajax: {
             url: '/admin/table/employee',
             type: 'GET',
@@ -466,7 +224,7 @@
               title: 'Acction',
               render: function (datum, type, row) {
                 return `<button class="btn btn-success" data-bs-toggle="modal"
-                      data-bs-target="#exampleModal">Edit</button>
+                      data-bs-target="#exampleModalEdit">Edit</button>
                       <a href="/admin/table/employee/delete/${row.EMPLOYEE_ID}">
                         <button class="btn btn-danger">Delete</button>
                       </a>
@@ -474,6 +232,20 @@
               },
             },
           ],
+        });
+
+        const inputId = $('#input-id');
+        const inputName = $('#input-name');
+        const inputBranchId = $('#input-branch-id');
+        const inputUserName = $('#input-username');
+
+        $('#myTable tbody').on('click', 'button.btn-success', function () {
+          var data = table.row($(this).parents('tr')).data();
+          console.log(data);
+          inputId.val(data.EMPLOYEE_ID);
+          inputName.val(data.NAME);
+          inputBranchId.val(data.BRANCH_ID);
+          inputUserName.val(data.USERNAME);
         });
       });
       function handleSelect(elm) {
