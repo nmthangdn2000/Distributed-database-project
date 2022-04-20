@@ -43,7 +43,6 @@ const deleteById = async (req, res) => {
 
 const updateById = async (req, res) => {
   try {
-    console.log('ákljdlaskjdklajslkdjkl ', req.serverDatabase);
     await employeeService.updateById(req.body, req.serverDatabase);
     // database.connect(req.body.serverDatabase);
     res.redirect('/admin/tables');

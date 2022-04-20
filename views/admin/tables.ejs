@@ -49,6 +49,7 @@
                           <th>User</th>
                           <th>First name</th>
                           <th>Progress</th>
+                          <th>UserName</th>
                           <th>Acction</th>
                         </tr>
                       </thead>
@@ -102,13 +103,10 @@
                   </div>
                   <div class="form-group">
                     <label for="input-add-branch-id">Branch id</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="branch_id"
-                      id="input-add-branch-id"
-                      placeholder="Branch id"
-                    />
+                    <select class="form-control" name="branch_id" id="input-add-branch-id">
+                      <option value="CN1" selected>CN1</option>
+                      <option value="CN2">CN2</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="input-add-confirm-password">Confirm Password</label>
@@ -166,13 +164,10 @@
                   </div>
                   <div class="form-group">
                     <label for="input-branch-id">Branch id</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="branch_id"
-                      id="input-branch-id"
-                      placeholder="Branch id"
-                    />
+                    <select class="form-control" name="branch_id" id="input-branch-id">
+                      <option value="CN1" selected>CN1</option>
+                      <option value="CN2">CN2</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -221,6 +216,12 @@
               },
             },
             {
+              title: 'UserName',
+              render: function (datum, type, row) {
+                return `${row.USERNAME}`;
+              },
+            },
+            {
               title: 'Acction',
               render: function (datum, type, row) {
                 return `<button class="btn btn-success" data-bs-toggle="modal"
@@ -236,7 +237,6 @@
 
         const inputId = $('#input-id');
         const inputName = $('#input-name');
-        const inputBranchId = $('#input-branch-id');
         const inputUserName = $('#input-username');
 
         $('#myTable tbody').on('click', 'button.btn-success', function () {
@@ -244,8 +244,8 @@
           console.log(data);
           inputId.val(data.EMPLOYEE_ID);
           inputName.val(data.NAME);
-          inputBranchId.val(data.BRANCH_ID);
           inputUserName.val(data.USERNAME);
+          $(`#input-branch-id option[value="${data.BRANCH_ID.trim()}"]`).attr('selected', true);
         });
       });
       function handleSelect(elm) {
