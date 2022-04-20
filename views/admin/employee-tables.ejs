@@ -2,13 +2,9 @@
 <html lang="en">
   <head>
     <%- include('partials/head.ejs'); -%>
-    <link rel="stylesheet" href="../assets/css/dataTable.css" />
+    <link rel="stylesheet" href="/assets/css/dataTable.css" />
     <title>Drawing Together Admin</title>
   </head>
-  <script>
-    console.log('<%= user.NAME %>');
-    console.log('<%= serverDatabaseAdmin %>');
-  </script>
 
   <body>
     <div class="container-scroller">
@@ -187,7 +183,7 @@
       $(document).ready(function () {
         const table = $('#myTable').DataTable({
           ajax: {
-            url: '/admin/table/employee',
+            url: '/admin/table/employee/data',
             type: 'GET',
             beforeSend: function (request) {
               request.setRequestHeader(

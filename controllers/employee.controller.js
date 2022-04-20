@@ -3,6 +3,11 @@ import { RESPONSE } from '../common/constants';
 import * as employeeService from '../services/employee.service';
 import { getAll } from '../models/employees.models';
 
+const getPage = async (req, res) => {
+  console.log('aa');
+  res.render('admin/employee-tables');
+};
+
 const getEmployee = async (req, res) => {
   try {
     const data = await getAll();
@@ -52,4 +57,4 @@ const updateById = async (req, res) => {
   }
 };
 
-export { getEmployee, create, deleteById, updateById };
+export { getEmployee, create, deleteById, updateById, getPage };
