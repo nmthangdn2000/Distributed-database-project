@@ -53,7 +53,7 @@ const test = async (req, res, next) => {
 
 const changeServerDatabase = (req, res) => {
   res.app.locals.serverDatabaseAdmin = SERVERNAME[req.params.serverDatatbase];
-  res.redirect('/admin/tables');
+  res.redirect(req.query.path);
 };
 
 export { index, profile, chart, table, test, login, register, postLogin, logout, changeServerDatabase };

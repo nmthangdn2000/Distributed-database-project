@@ -1,6 +1,6 @@
 import { route, addRoot } from './base.router';
 import { HttpMethod } from '../common/constants';
-import * as adminController from '../controllers/employee.controller';
+import * as adminController from '../controllers/product.controller';
 
 const initRoute = () => {
   route({ method: HttpMethod.GET, url: '', action: adminController.getPage });

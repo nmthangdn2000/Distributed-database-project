@@ -1,11 +1,11 @@
 // import authService from '../services/auth.service';
 import { RESPONSE } from '../common/constants';
-import * as employeeService from '../services/employee.service';
-import { getAll } from '../models/employees.models';
+import * as productService from '../services/product.service';
+import { getAll } from '../models/product.model';
 
 const getPage = async (req, res) => {
   console.log('aa');
-  res.render('admin/employee-tables');
+  res.render('admin/product-tables');
 };
 
 const getData = async (req, res) => {
@@ -26,34 +26,34 @@ const getData = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    await employeeService.create(req.body, req.serverDatabase);
+    await productService.create(req.body, req.serverDatabase);
     // database.connect(req.body.serverDatabase);
-    res.redirect('/admin/table/employee');
+    res.redirect('/admin/table/product');
   } catch (error) {
     console.log(error.message);
-    res.redirect('/admin/table/employee', { error: 'không thể thêm mới nhân viên' });
+    res.redirect('/admin/table/product', { error: 'không thể thêm mới sản phẩm' });
   }
 };
 
 const deleteById = async (req, res) => {
   try {
-    await employeeService.deleteById(req.params.id, req.serverDatabase);
+    await productService.deleteById(req.params.id, req.serverDatabase);
     // database.connect(req.body.serverDatabase);
-    res.redirect('/admin/table/employee');
+    res.redirect('/admin/table/product');
   } catch (error) {
     console.log(error.message);
-    res.redirect('/admin/table/employee', { error: 'không thể thêm mới nhân viên' });
+    res.redirect('/admin/table/product', { error: 'không thể thêm mới sản phẩm' });
   }
 };
 
 const updateById = async (req, res) => {
   try {
-    await employeeService.updateById(req.body, req.serverDatabase);
+    await productService.updateById(req.body, req.serverDatabase);
     // database.connect(req.body.serverDatabase);
-    res.redirect('/admin/table/employee');
+    res.redirect('/admin/table/product');
   } catch (error) {
     console.log(error.message);
-    res.redirect('/admin/table/employee', { error: 'không thể thêm mới nhân viên' });
+    res.redirect('/admin/table/product', { error: 'không thể thêm mới sản phẩm' });
   }
 };
 

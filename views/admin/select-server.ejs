@@ -1,0 +1,21 @@
+<% if(user.NAME=='Admin' ){ var options=["DESKTOP-LIKSEB9", "DESKTOP-LIKSEB9\\MSSQLSERVER01" ,
+"DESKTOP-LIKSEB9\\MSSQLSERVER02" ]; var servers=["Server Main", "Server 1" , "Server 2" ]; %>
+<div style="width: 200px; margin-bottom: 20px">
+  <select class="form-control" name="serverDatabase" id="server" onchange="handleSelect(this)">
+    <% for ( let i=0; i < options.length; i++ ) { var selected=serverDatabaseAdmin==options[i] ? "selected" : "" ; %>
+    <option value="<%= options[i] %>" <%=selected%>><%= servers[i] %></option>
+    <!-- <%=selected%> -->
+    <%}%>
+  </select>
+</div>
+<%}%>
+
+<script>
+  function handleSelect(elm) {
+    let serverName = '';
+    if (elm.value == 'DESKTOP-LIKSEB9') serverName = 'MAIN';
+    else if (elm.value == 'DESKTOP-LIKSEB9\\MSSQLSERVER01') serverName = 'SV1';
+    else serverName = 'SV2';
+    window.location = `/admin/change-server/${serverName}?path=${window.location.pathname}`;
+  }
+</script>
