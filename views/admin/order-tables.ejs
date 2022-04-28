@@ -18,7 +18,7 @@
                 <div class="card-body">
                   <%- include('select-server.ejs'); -%>
                   <div class="row" style="justify-content: space-between; align-items: center">
-                    <h4 class="card-title">Employee Table</h4>
+                    <h4 class="card-title">Product Table</h4>
                     <button
                       class="btn btn-success create-new-button"
                       data-bs-toggle="modal"
@@ -35,6 +35,12 @@
                           <th>User</th>
                           <th>First name</th>
                           <th>Progress</th>
+                          <th>UserName</th>
+                          <th>UserName</th>
+                          <th>UserName</th>
+                          <th>UserName</th>
+                          <th>UserName</th>
+                          <th>UserName</th>
                           <th>UserName</th>
                           <th>Acction</th>
                         </tr>
@@ -54,10 +60,10 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <form method="post" action="/admin/table/employee/add" class="forms-sample">
+        <form method="post" action="/admin/table/product/add" class="forms-sample">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add new Employee</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -68,40 +74,25 @@
                     <input type="text" class="form-control" name="name" id="input-add-name" placeholder="Name" />
                   </div>
                   <div class="form-group">
-                    <label for="input-add-username">UserName</label>
+                    <label for="input-add-import_rice">Import Rice</label>
                     <input
                       type="text"
                       class="form-control"
-                      name="username"
-                      id="input-add-username"
-                      placeholder="UserName"
+                      name="import_rice"
+                      id="input-add-import_rice"
+                      placeholder="Import Rice"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="input-add-password">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      name="password"
-                      id="input-add-password"
-                      placeholder="Password"
-                    />
+                    <label for="input-add-price">Price</label>
+                    <input type="text" class="form-control" name="price" id="input-add-price" placeholder="Price" />
                   </div>
                   <div class="form-group">
-                    <label for="input-add-branch-id">Branch id</label>
-                    <select class="form-control" name="branch_id" id="input-add-branch-id">
-                      <option value="CN1" selected>CN1</option>
-                      <option value="CN2">CN2</option>
+                    <label for="input-add-warehouse_id">Warehouse id</label>
+                    <select class="form-control" name="warehouse_id" id="input-add-warehouse_id">
+                      <option value="WH1" selected>WH1</option>
+                      <option value="WH2">WH2</option>
                     </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="input-add-confirm-password">Confirm Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="input-add-confirm-password"
-                      placeholder="Confirm Password"
-                    />
                   </div>
                 </div>
               </div>
@@ -124,7 +115,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog">
-        <form method="post" action="/admin/table/employee/update" class="forms-sample">
+        <form method="post" action="/admin/table/product/update" class="forms-sample">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalEditLabel">Add aaaaaaaaaaaaaaaa new Employee</h5>
@@ -133,26 +124,30 @@
             <div class="modal-body">
               <div class="card">
                 <div class="card-body">
-                  <input type="hidden" class="form-control" name="id" id="input-id" />
+                  <input type="hidden" id="input-id" name="id" value="" />
                   <div class="form-group">
                     <label for="input-name">Name</label>
                     <input type="text" class="form-control" name="name" id="input-name" placeholder="Name" />
                   </div>
                   <div class="form-group">
-                    <label for="input-username">UserName</label>
+                    <label for="input-import_rice">Import Rice</label>
                     <input
                       type="text"
                       class="form-control"
-                      name="username"
-                      id="input-username"
-                      placeholder="UserName"
+                      name="import_rice"
+                      id="input-import_rice"
+                      placeholder="Import Rice"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="input-branch-id">Branch id</label>
-                    <select class="form-control" name="branch_id" id="input-branch-id">
-                      <option value="CN1" selected>CN1</option>
-                      <option value="CN2">CN2</option>
+                    <label for="input-price">Price</label>
+                    <input type="text" class="form-control" name="price" id="input-price" placeholder="Price" />
+                  </div>
+                  <div class="form-group">
+                    <label for="input-warehouse_id">Warehouse id</label>
+                    <select class="form-control" name="warehouse_id" id="input-warehouse_id">
+                      <option value="WH1" selected>WH1</option>
+                      <option value="WH2">WH2</option>
                     </select>
                   </div>
                 </div>
@@ -173,7 +168,7 @@
       $(document).ready(function () {
         const table = $('#myTable').DataTable({
           ajax: {
-            url: '/admin/table/employee/data',
+            url: '/admin/table/order/data',
             type: 'GET',
             beforeSend: function (request) {
               request.setRequestHeader(
@@ -190,27 +185,63 @@
               },
             },
             {
-              title: 'Employee_Id',
+              title: 'ORDER_ID',
+              render: function (datum, type, row) {
+                return `${row.ORDER_ID}`;
+              },
+            },
+            {
+              title: 'CUSTOMER_ID',
+              render: function (datum, type, row) {
+                return `${row.CUSTOMER_ID}`;
+              },
+            },
+            {
+              title: 'FULLNAME',
+              render: function (datum, type, row) {
+                return `${row.FULLNAME}`;
+              },
+            },
+            {
+              title: 'EMPLOYEE_ID',
               render: function (datum, type, row) {
                 return `${row.EMPLOYEE_ID}`;
               },
             },
             {
-              title: 'Branch_Id',
-              render: function (datum, type, row) {
-                return `${row.BRANCH_ID}`;
-              },
-            },
-            {
-              title: 'Name',
+              title: 'NAME',
               render: function (datum, type, row) {
                 return `${row.NAME}`;
               },
             },
             {
-              title: 'UserName',
+              title: 'PRODUCT_ID',
               render: function (datum, type, row) {
-                return `${row.USERNAME}`;
+                return `${row.PRODUCT_ID}`;
+              },
+            },
+            {
+              title: 'PRODUCT_NAME',
+              render: function (datum, type, row) {
+                return `${row.PRODUCT_NAME}`;
+              },
+            },
+            {
+              title: 'UNIT_PRICE',
+              render: function (datum, type, row) {
+                return `${row.PRICE}`;
+              },
+            },
+            {
+              title: 'AMOUNT',
+              render: function (datum, type, row) {
+                return `${row.AMOUNT}`;
+              },
+            },
+            {
+              title: 'TOTAL_PRICE',
+              render: function (datum, type, row) {
+                return `${Number(row.AMOUNT) * Number(row.PRICE.split('.').join(''))}`;
               },
             },
             {
@@ -218,7 +249,7 @@
               render: function (datum, type, row) {
                 return `<button class="btn btn-success" data-bs-toggle="modal"
                       data-bs-target="#exampleModalEdit">Edit</button>
-                      <a href="/admin/table/employee/delete/${row.EMPLOYEE_ID}">
+                      <a href="/admin/table/order/delete/${row.ORDER_ID}">
                         <button class="btn btn-danger">Delete</button>
                       </a>
                       `;
@@ -235,15 +266,18 @@
 
         const inputId = $('#input-id');
         const inputName = $('#input-name');
-        const inputUserName = $('#input-username');
+        const inputImportRice = $('#input-import_rice');
+        const inputPrice = $('#input-price');
+        const inputWarehouseId = $('#input-warehouse_id');
 
         $('#myTable tbody').on('click', 'button.btn-success', function () {
           var data = table.row($(this).parents('tr')).data();
-          console.log(data);
-          inputId.val(data.EMPLOYEE_ID);
+          inputId.val(data.PRODUCT_ID);
           inputName.val(data.NAME);
-          inputUserName.val(data.USERNAME);
-          $(`#input-branch-id option[value="${data.BRANCH_ID.trim()}"]`).attr('selected', true);
+          inputImportRice.val(data.IMPORT_PRICE);
+          inputPrice.val(data.PRICE);
+
+          $(`#input-warehouse_id option[value="${data.WAREHOUSE_ID.trim()}"]`).attr('selected', true);
         });
       });
     </script>

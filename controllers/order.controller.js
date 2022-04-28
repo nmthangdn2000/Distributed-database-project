@@ -1,11 +1,11 @@
 import { sortData } from '../services/base.service';
 import { RESPONSE } from '../common/constants';
-import * as productService from '../services/product.service';
-import { getAll } from '../models/product.model';
+import * as ordertService from '../services/order.service';
+import { getAll } from '../models/order.model';
 
 const getPage = async (req, res) => {
   console.log('aa');
-  res.render('admin/product-tables');
+  res.render('admin/order-tables');
 };
 
 const getData = async (req, res) => {
@@ -20,40 +20,40 @@ const getData = async (req, res) => {
     res.json(abc);
   } catch (error) {
     console.log(error.message);
-    res.redirect('/admin/table/product', { error: 'không thể thêm mới sản phẩm' });
+    res.redirect('/admin/table/order', { error: 'không thể thêm mới đơn hàng' });
   }
 };
 
 const create = async (req, res) => {
   try {
-    await productService.create(req.body, req.serverDatabase);
+    await ordertService.create(req.body, req.serverDatabase);
     // database.connect(req.body.serverDatabase);
-    res.redirect('/admin/table/product');
+    res.redirect('/admin/table/order');
   } catch (error) {
     console.log(error.message);
-    res.redirect('/admin/table/product', { error: 'không thể thêm mới sản phẩm' });
+    res.redirect('/admin/table/order', { error: 'không thể thêm mới đơn hàng' });
   }
 };
 
 const deleteById = async (req, res) => {
   try {
-    await productService.deleteById(req.params.id, req.serverDatabase);
+    await ordertService.deleteById(req.params.id, req.serverDatabase);
     // database.connect(req.body.serverDatabase);
-    res.redirect('/admin/table/product');
+    res.redirect('/admin/table/order');
   } catch (error) {
     console.log(error.message);
-    res.redirect('/admin/table/product', { error: 'không thể thêm mới sản phẩm' });
+    res.redirect('/admin/table/order', { error: 'không thể thêm mới đơn hàng' });
   }
 };
 
 const updateById = async (req, res) => {
   try {
-    await productService.updateById(req.body, req.serverDatabase);
+    await ordertService.updateById(req.body, req.serverDatabase);
     // database.connect(req.body.serverDatabase);
-    res.redirect('/admin/table/product');
+    res.redirect('/admin/table/order');
   } catch (error) {
     console.log(error.message);
-    res.redirect('/admin/table/product', { error: 'không thể thêm mới sản phẩm' });
+    res.redirect('/admin/table/order', { error: 'không thể thêm mới đơn hàng' });
   }
 };
 

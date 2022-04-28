@@ -15,9 +15,9 @@ const verifyUser = async (req, res, next) => {
       decoded.serverDatabase = res.app.locals.serverDatabaseAdmin;
       req.serverDatabase = decoded.serverDatabase;
     } else req.serverDatabase = decoded.serverDatabase;
-    if (SERVERNAME.MAIN == decoded.serverDatabase) res.app.locals.serverName = 'Server 1';
-    else if (SERVERNAME.SV1 == decoded.serverDatabase) res.app.locals.serverName = 'Server 2';
-    else res.app.locals.serverName = 'Server 3';
+    if (SERVERNAME.MAIN == decoded.serverDatabase) res.app.locals.serverName = 'Server Main';
+    else if (SERVERNAME.SV1 == decoded.serverDatabase) res.app.locals.serverName = 'Server 1';
+    else res.app.locals.serverName = 'Server 2';
 
     req.username = decoded.username;
 

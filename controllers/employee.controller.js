@@ -1,4 +1,4 @@
-// import authService from '../services/auth.service';
+import { sortData } from '../services/base.service';
 import { RESPONSE } from '../common/constants';
 import * as employeeService from '../services/employee.service';
 import { getAll } from '../models/employees.models';
@@ -11,11 +11,12 @@ const getPage = async (req, res) => {
 const getData = async (req, res) => {
   try {
     const data = await getAll();
+    console.log(sortData(data));
     const abc = {
       draw: 1,
       recordsTotal: data.length,
       recordsFiltered: data.length,
-      data: data,
+      data: sortData(data),
     };
     res.json(abc);
   } catch (error) {
